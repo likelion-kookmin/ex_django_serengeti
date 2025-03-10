@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def ping(request):
+    return render(request, 'ping.html')
