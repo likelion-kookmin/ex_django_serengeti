@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ping_pong',
     'account',
+    'main',
 ]
 
 MIDDLEWARE = [
