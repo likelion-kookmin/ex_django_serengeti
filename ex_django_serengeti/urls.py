@@ -19,6 +19,8 @@ from django.contrib import admin
 from django.urls import include, path
 from account.views import UserCreateView, UserCreateDoneTemplateView
 from main.views import root
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', root, name='root'),
@@ -30,3 +32,6 @@ urlpatterns = [
     path('accounts/register/done/', UserCreateDoneTemplateView.as_view(), name='register_done'),
     path('articles/', include('article.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

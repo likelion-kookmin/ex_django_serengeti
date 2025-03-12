@@ -1,7 +1,7 @@
 <div>
     <h1> 글 작성 </h1>
     <div>
-        <form action="{% url 'article:create' %}" method="POST">
+        <form action="{% url 'article:create' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <label>
                 제목:
@@ -11,6 +11,11 @@
             <label>
                 내용:
                 <textarea name="content" rows="30" cols="30"></textarea>
+            </label>
+
+            <label>
+                이미지 첨부:
+                <input type="file" name="image" accept=".gif, .jpg, .png"/>
             </label>
             <br><br>
             <input type="submit" value="작성">

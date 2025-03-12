@@ -16,6 +16,12 @@
         <p>
             {{ article.content }}
         </p>
+
+        <p>
+            {% if article.image  %}
+                <img src="{{ article.image.url }}" alt=""/>
+            {% endif %}
+        </p>
     </div>
 
     <hr>
