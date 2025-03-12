@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ping_pong',
     'account',
     'main',
+    'article',
 ]
 
 MIDDLEWARE = [
