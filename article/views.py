@@ -1,3 +1,4 @@
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect
 
 from article.models import Article, Comment
@@ -32,6 +33,9 @@ def create(request):
 def update(request, pk):
     article = Article.objects.get(pk=pk)
 
+    if request.user != article.author:
+        return HttpResponseForbidden()
+
     if request.method == 'POST':
         article.title = request.POST['title']
         article.content = request.POST['content']
@@ -43,6 +47,10 @@ def update(request, pk):
 
 def delete(request, pk):
     article = Article.objects.get(pk=pk)
+
+    if request.user != article.author:
+        return HttpResponseForbidden()
+
     article.delete()
     return redirect('article:index')
 
