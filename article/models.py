@@ -21,6 +21,12 @@ class Article(models.Model):
         blank=False,
     )
 
+    image = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to='article_images/',
+    )
+
     created_at = models.DateTimeField(
         auto_now_add=True,
         null=False,
