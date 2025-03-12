@@ -43,3 +43,39 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+
+class Comment(models.Model):
+    article = models.ForeignKey(
+        Article,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        null=False,
+        blank=False,
+    )
+
+    content = models.TextField(
+        null=False,
+        blank=False,
+    )
+
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        null=False,
+        blank=False,
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        null=False,
+        blank=False,
+        editable=False,
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        null=False,
+        blank=False,
+        editable=False,
+    )
