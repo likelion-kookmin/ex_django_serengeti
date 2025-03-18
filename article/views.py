@@ -24,7 +24,8 @@ def create(request):
         article.author = request.user
         article.title = request.POST['title']
         article.content = request.POST['content']
-        article.image = request.FILES['image']
+        if 'image' in request.FILES:
+            article.image = request.FILES['image']
         article.save()
         return redirect('article:show', pk=article.id)
     else:
